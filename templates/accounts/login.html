@@ -1,7 +1,16 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<!-- ========================= SECTION CONTENT ========================= -->
+
+{% if request.GET.command == 'verification' %}
+<div class="container mx-auto alert alert-info text-center" role="alert" style="    margin: 50px 0px;">
+    Thank you for signup. We have sent you a verification email to your email address {{request.GET.email}}
+<br><br>
+Already verified <a href="{% url 'login' %}">Login</a>
+
+</div>
+{% else %}
+    <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-conten padding-y" style="min-height:84vh">
     <div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
         {% include 'include/alerts.html'%}
@@ -30,5 +39,5 @@
      <br><br>
     
 </section>
-    
+{% endif %}    
 {% endblock %}
